@@ -1,0 +1,50 @@
+\documentclass[12pt,parskip=half-]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[ngerman]{babel}
+\usepackage[demo]{graphicx}
+\usepackage{fancyhdr}
+\usepackage{charter}
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage[left=2.5cm,right=2cm,top=4.5cm,bottom=2.5cm]{geometry}
+
+% Layout
+\clubpenalty = 10000           % Keine "Schusterjungen"
+\widowpenalty = 10000          % Keine "Hurenkinder"
+\displaywidowpenalty = 10000
+
+% Überschriftenlayout verändern
+\titlespacing{\section}{0mm}{2em}{2em}
+\titlespacing{\subsection}{0em}{0em}{0em}
+\titleformat{\section}{\normalfont\LARGE\scshape}{}{0mm}{\hspace*{\fill}}
+\titleformat{\subsection}{\normalfont\Large\bfseries\scshape}{}{0mm}{}[\vskip-1.5em\hrulefill]
+
+% Eigene Fusszeile festlegen, Kopfzeile leeren
+\pagestyle{empty}
+
+\begin{document}
+\section{Bewerbungsunterlagen}
+\begin{spacing}{1.3}
+
+	\begin{flushright}
+		\textbf{\large Anlagen} \\
+		Lebenslauf \\
+		Abschlusszeugnis der Fachhochschule (M.Sc.) \\
+		Abschlusszeugnis der Fachhochschule (B.Sc.) \\
+		Ausbildungszeugnis des Ausbildungsbetriebes
+	\end{flushright}
+
+	\vskip3em
+	
+	\rule{10cm}{0.6pt} \\
+	\textbf{\large Hans Huckebein}\\
+	Master of Science Informatik\\
+	
+	\includegraphics[width=8cm]{<Pfad zur Datei>}\\
+
+\end{spacing}
+\end{document}

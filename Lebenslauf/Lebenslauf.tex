@@ -1,0 +1,197 @@
+\documentclass[11pt,parskip=half-]{scrartcl}
+
+\usepackage[utf8]{inputenc}% UTF8-Kodierung für Umlaute
+\usepackage[T1]{fontenc}% use TeX encoding then Type 1.
+\usepackage{lmodern}% Bessere Schriftart (ersetzt CM-Schriften)
+\usepackage{ngerman}% deutsche Silbentrennung
+\usepackage[demo]{graphicx}% Einbindung von Grafiken
+\usepackage{fancyhdr}% eigenes Layout einbinden
+\usepackage{pdfpages}% PDF-Seiten einbinden
+\usepackage{charter}% Charter-Schrift
+\usepackage{titlesec}% Anpassung der Überschriften
+\usepackage{longtable}% Tabellen über Seitenumbruch hinweg
+\usepackage{setspace}% Zeilenabstand festlegen
+\usepackage{hyperref} % Links without visible lines
+\usepackage[left=2.5cm,right=2cm,top=4.5cm,bottom=2.5cm]{geometry}
+\usepackage{enumitem} % set itemize indent
+\usepackage{tikz} %Used for the SkillBars
+\usepackage{xcolor} %Used for the SkillBars
+
+\newcommand*{\QuoteM}[1]{\frqq #1\flqq}
+
+% Überschriftenlayout verändern
+\titlespacing{\section}{0mm}{2em}{2em}
+\titlespacing{\subsection}{0em}{0em}{0em}
+\titleformat{\section}{\normalfont\LARGE\scshape}{}{0mm}{\hspace*{\fill}}
+\titleformat{\subsection}{\normalfont\Large\bfseries\scshape}{}{0mm}{}[\vskip-1.5em\hrulefill]
+
+\pagestyle{empty}
+
+% Makro für Ort und Unterschrift
+\newcommand*{\UnterschriftOrt}{%
+    \hspace*{0.1cm}
+	\includegraphics[scale=0.55]{<Pfad zur Datei>}\\
+    Hier (wo sonst), \today
+}
+
+%Abstand zwischen den Einträgen
+\newlength{\Lineskip}
+\setlength{\Lineskip}{2pt plus 2pt minus 2pt}
+
+%Abstand teischen dein Einträgen der Aufzählung
+\newlength{\Itemskip}
+\setlength{\Itemskip}{1pt}
+
+% Tabelle für Lebenslauf
+\newenvironment{Abschnitt}[1][0em]
+{%
+	\begin{spacing}{1.0}
+    \begin{longtable}{p{0.25\linewidth}p{0.69\linewidth}}%
+}
+{%
+    \end{longtable}%
+    \end{spacing}
+    \vspace{-10 pt}%
+}
+
+% Einrückung der Aufzählung halbieren
+\setlist[itemize,1]{leftmargin=\dimexpr 26pt-.05in}
+
+% Used for the SkillBars
+\definecolor{white}{RGB}{255,255,255}
+\definecolor{gray}{HTML}{4D4D4D}
+\definecolor{maingray}{HTML}{B9B9B9}
+
+% Seperation of the bars within one image
+\newcommand*{\skillSep}{1.0}
+
+% Width of a singe bar
+\newcommand*{\skillBarWide}{0.10}
+
+% Length of the picture
+\newcommand*{\skillBarLength}{5}
+
+% Make the skillbars; inputvalues in percent
+\newcommand*{\skills}[1]{
+    \begin{tikzpicture}
+        \foreach [count=\j, evaluate={\i=\j*\skillSep}] \x/\y in {#1}{
+            \draw[fill=maingray,maingray]
+            	(0,\i) rectangle +(\skillBarLength,\skillBarWide);
+            	
+            \draw[fill=white,gray]
+            	(0,\i) rectangle +({(\y*\skillBarLength)/100},\skillBarWide);
+            \node[above right] at (0,\i+\skillBarWide) {\x};
+        }
+    \end{tikzpicture}
+}
+
+\begin{document}
+
+\section{Lebenslauf}
+
+	\subsection{Persönliche Daten}
+	\begin{Abschnitt}
+	Name & Hans Huckebein \\[\Lineskip]
+	Geburtsdatum und -ort & 32. Septober 2520 in Sonstwo \\[\Lineskip]
+	Staatsangehörigkeit & Deutsch \\[\Lineskip]
+	Angestrebte Position & Weltherrschaft \\[\Lineskip] %TODO ÄNDERN
+	Anschrift & Lange Straße 8265 \\ 
+	& D-12345 Boringen \\[\Lineskip]
+	Telefon &  01234 5678 \\[\Lineskip]
+	E-Mail & \href{mailto:Hans.Huckebein@web.de}{Hans.Huckebein@web.de}
+	\end{Abschnitt}
+	
+	\subsection{Studium}
+	\begin{Abschnitt}
+	02/2076 -- 01/2078 
+	& Abgeschlossenes Studium der Liebe (Master of Science) an der
+	\QuoteM{Super FH}.
+	\begin{itemize}
+		\setlength\itemsep{\Itemskip}
+		\item Schwerpunkte:
+		\begin{itemize}
+			\setlength\itemsep{0 pt}
+			\item Saufen
+			\item Professoren ärgern
+			\item Verschlafen
+		\end{itemize}
+		\item Publikation: \QuoteM{\href{https://www.google.de}
+		{Wichte Ausarbeitung}} (peer-reviewed Paper,
+		Poster, Vortrag), WDAV 2077 in Dort.
+		\item Masterarbeit: \QuoteM{\href{https://www.google.de}
+		{Über die Auswirkungen der Sumpfrohr-Tröte auf die CPU}} mit Tolle 
+		Technik
+		\item Abschlussnote: 0,2
+	\end{itemize}
+	\\[\Lineskip]
+
+	07/2022 -- 07/2026
+	& Abgeschlossenes Studium der Freude (Bachelor of Science) an der 
+	\QuoteM{Super FH}.
+	\begin{itemize}
+		\setlength\itemsep{\Itemskip}
+		\item Schwerpunkte:
+		\begin{itemize}
+			\setlength\itemsep{0 pt}
+			\item Zocken
+			\item Feiern
+			\item Um gute Noten betteln
+		\end{itemize}
+		\item Bachelorarbeit: \QuoteM{\href{https://www.google.de}{Erstellung der Welt}} mit viel Liebe
+		\item Abschlussnote: 0,3
+	\end{itemize}	
+	\\[\Lineskip]
+
+	11/2021 -- 08/2022
+	& Studium des Lebens an der \QuoteM{Universität für Glück}.
+	\end{Abschnitt}
+	
+	\clearpage
+	\section{Lebenslauf}	
+	
+	\subsection{Schul- \& Berufsausbildung}
+	\begin{Abschnitt}
+
+	07/2110 -- 07/2112
+	& Allgemeine Fachhochschulreife erlangt an der \QuoteM{Super Schule}, 
+	Abschlussnote: 5,4. \\[\Lineskip]
+
+	07/2107 -- 07/2110 
+	& Berufsausbildung zur Palastwache an der \QuoteM{Königlichen Akademie}, 
+	Abschlussnote: 4,1. \\[\Lineskip]
+	
+	07/2107 -- 07/2110 
+	& Abgeschlossene Berufsausbildung zum Palastwache bei der Firma 
+	\QuoteM{King Security} in Freehaven. \\
+	
+	\end{Abschnitt}
+	
+	\subsection{Besondere Kenntnisse}
+	\begin{Abschnitt}
+	Natürliche Sprachen & \skills{{Deutsch (Muttersprache)/97}} 
+	\skills{{Englisch/70}} \\[\Lineskip]
+	
+	Programmiersprachen & \skills{{Schlafen/81}} \skills{{Essen/84}} \\
+						& \skills{{Laufen/65}} \skills{{Kochen/56}} \\
+ 						& \skills{{Handstand/78}} \skills{{{A/O}/42}}
+ 						\\[\Lineskip]
+	
+	Tooling &  \skills{{Bratpfanne/85}} \skills{{Rasenmäher/76}} \\
+	& \skills{{Hammer/87}} \skills{{Einrad/82}} \\[\Lineskip]
+	
+	Zertifikate & Schnellster Schläfer 1985
+	\\[\Lineskip]
+	
+	Während des Studiums & \QuoteM{Wie wird man Millionär} \\
+	gehaltene Kurse & \QuoteM{\href{https://www.google.de}{Was macht man mit 
+	dem Geld}}
+	\end{Abschnitt}
+		
+	\subsection{Interessen}
+	\begin{Abschnitt}
+	& Hart Arbeiten, Die Welt zu einem bessern Ort machen\\
+	\end{Abschnitt}
+
+	\UnterschriftOrt
+	\clearpage
+\end{document}
